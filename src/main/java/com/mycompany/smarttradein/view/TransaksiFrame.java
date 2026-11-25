@@ -5,6 +5,7 @@
 package com.mycompany.smarttradein.view;
 
 import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
 
 import com.mycompany.smarttradein.model.BarangElektronik;
 import com.mycompany.smarttradein.model.DetailTransaksi;
@@ -23,6 +24,7 @@ public class TransaksiFrame extends javax.swing.JFrame {
      */
     public TransaksiFrame(Transaksi transaksi) {
         initComponents();
+        getContentPane().setBackground(new Color(67, 163, 154));
         setLocationRelativeTo(null);
         setTitle("SmartTrade-In - Struk Transaksi #" + transaksi.getIdTransaksi());
 
@@ -69,7 +71,7 @@ public class TransaksiFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lblJudul.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        lblJudul.setFont(new java.awt.Font("Antipasto Pro DemiBold", 1, 24)); // NOI18N
         lblJudul.setText("Transaksi Berhasil!");
 
         lblNoTransaksi.setText("No. Transaksi :");
@@ -80,17 +82,17 @@ public class TransaksiFrame extends javax.swing.JFrame {
 
         tblDetail.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "No", "Nama", "Title Barang", "Merek", "Jenis", "Grade", "Harga"
+                "No", "Nama", "Merek", "Jenis", "Grade", "Harga"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -102,6 +104,7 @@ public class TransaksiFrame extends javax.swing.JFrame {
         lblTotal.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lblTotal.setText("Total Pembayaran:");
 
+        btnTutup.setBackground(new java.awt.Color(192, 255, 249));
         btnTutup.setText("Kembali ke Katalog");
         btnTutup.addActionListener(this::btnTutupActionPerformed);
 
@@ -110,38 +113,39 @@ public class TransaksiFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTotal)
                     .addComponent(lblTanggal)
                     .addComponent(lblPembeli)
-                    .addComponent(lblNoTransaksi)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(246, 246, 246)
-                        .addComponent(lblJudul))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnTutup, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                    .addComponent(lblNoTransaksi))
+                .addContainerGap(566, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnTutup)
+                    .addComponent(lblJudul)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addGap(36, 36, 36)
                 .addComponent(lblJudul)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lblNoTransaksi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPembeli)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTanggal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(lblTotal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnTutup)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(btnTutup, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
 
         pack();

@@ -8,6 +8,7 @@ import com.mycompany.smarttradein.exception.BarangTidakDitemukanException;
 import com.mycompany.smarttradein.model.BarangElektronik;
 import com.mycompany.smarttradein.model.Penilaian;
 import com.mycompany.smarttradein.repository.BarangRepository;
+import com.mycompany.smarttradein.exception.DataTidakValidException;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -76,10 +77,10 @@ public class BarangService {
 
     private void validasiTeks(BarangElektronik barang) {
         if (barang.getNama() == null || barang.getNama().trim().isEmpty()) {
-            throw new IllegalArgumentException("Nama barang tidak boleh kosong!");
+            throw new DataTidakValidException("Nama barang tidak boleh kosong!");
         }
         if (barang.getMerek() == null || barang.getMerek().trim().isEmpty()) {
-            throw new IllegalArgumentException("Merek barang tidak boleh kosong!");
+            throw new DataTidakValidException("Merek barang tidak boleh kosong!");
         }
     }
 }

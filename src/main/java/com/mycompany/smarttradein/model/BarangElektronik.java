@@ -6,6 +6,7 @@ package com.mycompany.smarttradein.model;
 
 import com.mycompany.smarttradein.interfaces.DapatDinilai;
 import com.mycompany.smarttradein.interfaces.DapatDijual;
+import com.mycompany.smarttradein.exception.DataTidakValidException;
 
 /**
  *
@@ -39,31 +40,58 @@ public abstract class BarangElektronik implements DapatDinilai, DapatDijual {
     }
 
     // Getter dan setter
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public int getId() { 
+        return id; 
+    }
+    
+    public void setId(int id) { 
+        this.id = id; 
+    }
 
-    public String getNama() { return nama; }
-    public void setNama(String nama) { this.nama = nama; }
+    public String getNama() { 
+        return nama; 
+    }
+    
+    public void setNama(String nama) { 
+        this.nama = nama; 
+    }
 
-    public String getMerek() { return merek; }
-    public void setMerek(String merek) { this.merek = merek; }
+    public String getMerek() { 
+        return merek; 
+    }
+    
+    public void setMerek(String merek) { 
+        this.merek = merek; 
+    }
 
-    public double getHargaAwal() { return hargaAwal; }
+    public double getHargaAwal() { 
+        return hargaAwal; 
+    }
+    
     public void setHargaAwal(double hargaAwal) {
         if (hargaAwal <= 0) {
-            throw new IllegalArgumentException("Harga harus lebih dari 0!");
+            throw new DataTidakValidException("Harga harus lebih dari 0!");
         }
         this.hargaAwal = hargaAwal;
     }
 
-    public int getSkorKondisi() { return skorKondisi; }
+
+    public int getSkorKondisi() { 
+        return skorKondisi; 
+    }
+    
     public void setSkorKondisi(int skorKondisi) {
         if (skorKondisi < 1 || skorKondisi > 100) {
-            throw new IllegalArgumentException("Skor kondisi harus 1-100!");
+            throw new DataTidakValidException("Skor kondisi harus 1-100!");
         }
         this.skorKondisi = skorKondisi;
     }
-
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
+    
+    public String getStatus() { 
+        return status; 
+    }
+    
+    public void setStatus(String status) { 
+        this.status = status; 
+    }
 }
